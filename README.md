@@ -6,7 +6,7 @@ Designed and implemented an end-to-end ETL solution using SQL Server Integration
 ---
 
 ## 🖼️ Control Flow
-![Control Flow](images/control_flow.png)
+![Control Flow](telecom/Details/Screenshot 2026-03-25 074048.png)
 
 ---
 
