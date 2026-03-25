@@ -6,62 +6,58 @@ Designed and implemented an end-to-end ETL solution using SQL Server Integration
 ---
 
 ## 🖼️ Control Flow
-![Control Flow](telecom/Details/Screenshot 2026-03-25 074048.png)
+![Control Flow](telecom/Details/Screenshot%202026-03-25%20074048.png)
 
 ---
 
 ## 🖼️ Data Flow
-![Data Flow](images/data_flow.png)
+![Data Flow](telecom/Details/Screenshot%202026-03-25%20074122.png)
 
 ---
 
 ## 📥 Source
-- CSV files generated every 5 minutes
+- CSV files generated every 5 minutes  
 - Columns:
-  - ID, IMSI, IMEI, CELL, LAC, EVENT_TYPE, EVENT_TS
+  - ID, IMSI, IMEI, CELL, LAC, EVENT_TYPE, EVENT_TS  
 
 ---
 
 ## 🔧 Transformations
 
 ### 🔹 Lookup (IMSI → subscriber_id)
-- Join IMSI with reference table
-- If not found → set `subscriber_id = -99999`
+- Join IMSI with reference table  
+- If not found → `subscriber_id = -99999`  
 
 ---
 
 ### 🔹 Handle Nulls
-- Replace NULL `subscriber_id` with `-99999`
+- Replace NULL `subscriber_id` with `-99999`  
 
 ---
 
 ### 🔹 Derived Columns (IMEI Processing)
 - **TAC** = first 8 digits of IMEI  
 - **SNR** = last 6 digits of IMEI  
-- If IMEI is NULL or length < 14 → set value to `-99999`
+- If IMEI is NULL or length < 14 → `-99999`  
 
 ---
 
 ## 📤 Destination
 
-### ✔️ Fact_Transaction
-- Load valid data into Data Warehouse
-
-### ❌ Error Output
-- Invalid records redirected to:
-  - `Error_destination_output`
+### ✔️ Fact_Transaction Output
+![Fact Output](telecom/Output/Screenshot%202026-03-25%20074639.png)
 
 ---
 
-## 🖼️ Output Sample
-![Output](images/output.png)
+### ❌ Error Output
+![Error Output](telecom/Output/Screenshot%202026-03-25%20074711.png)
 
 ---
 
 ## 📂 File Handling
 - Processed files moved to:
-  - `Archive/Processed` folder
-- Prevents duplicate processing
+  - `Archive/Processed` folder  
+- Prevents duplicate processing  
 
 ---
 
